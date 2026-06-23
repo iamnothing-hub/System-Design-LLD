@@ -1,0 +1,15 @@
+-> SOLID Principle is designed by Robert C Martin
+
+SOLID -> Maintainability, Readability, Bugs Prevention
+
+S -> Single Responsibility Principle
+O -> Open/Close Principle
+L -> Liskov Substitution Principle
+I -> Interface Segregation Principle
+D -> Dependency Inversion Principle
+
+
+SRP -> 1. A class should have only one reason to change.
+       2. A class should do only one thing.
+
+
