@@ -849,6 +849,7 @@ Interactions
 Software
 ```
 
+# Enhanced Version of Abstraction
 
 # 1️⃣ Abstraction
 
