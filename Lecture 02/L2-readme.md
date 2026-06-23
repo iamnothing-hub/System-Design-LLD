@@ -849,6 +849,268 @@ Interactions
 Software
 ```
 
+
+# 1️⃣ Abstraction
+
+---
+
+## 📖 Definition
+
+> Abstraction means hiding implementation details and exposing only the necessary functionality to the user.
+
+---
+
+## 🧠 Mental Model
+
+### Restaurant Example
+
+```text
+Customer
+   │
+   ▼
+Places Order
+   │
+   ▼
+Kitchen (Hidden)
+```
+
+Customer knows:
+
+✅ Menu
+
+✅ Price
+
+✅ Food
+
+Customer doesn't know:
+
+❌ Recipe
+
+❌ Cooking Process
+
+❌ Ingredients Flow
+
+This is Abstraction.
+
+---
+
+## 🚗 Car Example
+
+You can:
+
+* Start Car
+* Brake
+* Accelerate
+* Shift Gear
+
+You don't know:
+
+* Fuel Injection Logic
+* Gearbox Internals
+* Engine Combustion
+
+Still car works.
+
+---
+
+## 📐 UML Diagram
+
+```text
++--------------------+
+|       Car          |
++--------------------+
+| brand : String     |
+| model : String     |
++--------------------+
+| startEngine()      |
+| shiftGear()        |
+| accelerate()       |
+| brake()            |
++--------------------+
+```
+
+---
+
+## ☕ Java Template
+
+```java
+public abstract class Car {
+
+    public abstract void startEngine();
+
+    public abstract void shiftGear(int gear);
+
+    public abstract void accelerate();
+
+    public abstract void brake();
+
+    public abstract void stopEngine();
+}
+```
+
+### Concrete Implementation
+
+```java
+public class SportsCar extends Car {
+
+    @Override
+    public void startEngine() {
+        System.out.println("Engine Started");
+    }
+
+    @Override
+    public void accelerate() {
+        System.out.println("Accelerating...");
+    }
+
+    @Override
+    public void brake() {
+        System.out.println("Braking...");
+    }
+
+    @Override
+    public void stopEngine() {
+        System.out.println("Engine Stopped");
+    }
+
+    @Override
+    public void shiftGear(int gear) {
+        System.out.println("Gear : " + gear);
+    }
+}
+```
+
+---
+
+## 🏢 Spring Boot Example
+
+Payment Gateway System
+
+```java
+public interface PaymentProcessor {
+
+    void processPayment(double amount);
+}
+```
+
+```java
+public class RazorpayProcessor
+        implements PaymentProcessor {
+
+    @Override
+    public void processPayment(double amount) {
+        System.out.println("Razorpay Payment");
+    }
+}
+```
+
+```java
+public class StripeProcessor
+        implements PaymentProcessor {
+
+    @Override
+    public void processPayment(double amount) {
+        System.out.println("Stripe Payment");
+    }
+}
+```
+
+Controller never knows internal implementation.
+
+This is Abstraction.
+
+---
+
+## 🎤 Interview Answer
+
+"Abstraction is the process of hiding implementation details and exposing only required functionality. It reduces complexity and improves maintainability."
+
+---
+
+## 🚨 Common Mistake
+
+❌ Abstraction = Private Variables
+
+✅ Abstraction = Hiding Complexity
+
+---
+
+## 🔥 LLD Perspective
+
+Without Abstraction
+
+```text
+OrderService
+ ├─ Razorpay Logic
+ ├─ Stripe Logic
+ ├─ Paypal Logic
+ └─ Bank Logic
+```
+
+Tightly Coupled
+
+---
+
+With Abstraction
+
+```text
+PaymentProcessor
+        ▲
+        │
+ ┌──────┼──────┐
+ │      │      │
+ ▼      ▼      ▼
+
+Razorpay
+Stripe
+Paypal
+```
+
+Loosely Coupled
+
+Open/Closed Principle Followed
+
+---
+
+## 🎯 Homework
+
+Create:
+
+```java
+abstract class Notification {
+
+}
+```
+
+Implement:
+
+* EmailNotification
+* SMSNotification
+* PushNotification
+
+Apply Abstraction.
+
+---
+
+## ⚡ Revision Sheet
+
+```text
+Abstraction
+
+Hide HOW
+Show WHAT
+
+Examples:
+
+Car
+ATM
+TV Remote
+Payment Gateway
+Java Interface
+Abstract Class
+```
+
+
 If you understand:
 
 ✔ Object
